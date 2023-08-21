@@ -40,11 +40,13 @@ public class SeWrappers {
 			driver.manage().window().maximize();
 			driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(15));
 			driver.get(url);
+			Reports.reportStep("PASS", "The chrome browser launched successfully with the given url ("+url+")");
 			
 		}
 		catch(Exception ex)
 		{
 			//System.out.println("Problem in launching the browser");
+			Reports.reportStep("FAIL", "Problem while launching the chrome browser with the given url ("+url+")");
 			ex.printStackTrace();
 		}
 	}
@@ -56,10 +58,12 @@ public class SeWrappers {
 		try
 		{
 			driver.quit();
+			Reports.reportStep("PASS", "Browsers closed successfully");
 		}
 		catch(Exception ex)
 		{
 			System.out.println("Problem in closing all the browsers");
+			Reports.reportStep("FAIL", "Problem in closing all the browsers");
 			ex.printStackTrace();
 		}
 	}
@@ -70,10 +74,12 @@ public class SeWrappers {
 		try
 		{
 			driver.close();
+			Reports.reportStep("PASS", "Browser closed successfully");
 		}
 		catch(Exception ex)
 		{
 			System.out.println("Problem in closing the browser");
+			Reports.reportStep("FAIL", "Problem in closing the browser");
 			ex.printStackTrace();
 		}
 	}
@@ -85,10 +91,14 @@ public class SeWrappers {
 			waitForMe(ele,20);
 			ele.clear();
 			ele.sendKeys(text);
+			Reports.reportStep("PASS", "Entered the given text ("+text+") successfully ");
+
 		}
 		catch(Exception ex)
 		{
 			System.out.println("problem in sendkeys method");
+			Reports.reportStep("FAIL", "Problem while entering the given text ("+text+")");
+
 			ex.printStackTrace();
 		}
 		
@@ -100,10 +110,13 @@ public class SeWrappers {
 		{
 			waitForMe(ele,20);
 			ele.click();
+			Reports.reportStep("PASS", "Clicked on the given webelement successfully ");
+
 		}
 		catch(Exception ex)
 		{
 			System.out.println("problem in click option");
+			Reports.reportStep("FAIL", "Problem while clicking on the webElement ");
 			ex.printStackTrace();
 		}
 	}
