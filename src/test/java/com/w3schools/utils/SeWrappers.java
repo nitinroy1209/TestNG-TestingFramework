@@ -1,6 +1,7 @@
 package com.w3schools.utils;
 
 import java.io.File;
+import org.openqa.selenium.edge.EdgeDriver;
 import java.time.Duration;
 import java.util.Set;
 
@@ -22,6 +23,7 @@ import org.openqa.selenium.Keys;
 import org.openqa.selenium.OutputType;
 import org.openqa.selenium.TakesScreenshot;
 
+
 /*
  * This class will contain all the wrapper methods for built in selenium methods
  */
@@ -36,7 +38,8 @@ public class SeWrappers {
 	{
 		try
 		{
-			driver= new ChromeDriver();
+			//driver= new ChromeDriver();
+			driver= new EdgeDriver();
 			driver.manage().window().maximize();
 			driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(15));
 			driver.get(url);
